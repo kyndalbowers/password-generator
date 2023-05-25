@@ -5,9 +5,9 @@ var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
 var numberChars = "0123456789";
 var specialChars = "`~!@#$%^&*()_-+={}[]:;";
-var allChars ="";
 
 function generatePassword() {
+
   var inputPassLength = prompt("What length would you like your password to be? (8-128 characters)")
   if (inputPassLength < 8 || inputPassLength > 128) {
     alert("Length must be between 8 and 128 characters.");
@@ -17,36 +17,33 @@ function generatePassword() {
   var includeLowerCase = confirm("Would you like to include lower case letters?");
   var includeNumbers = confirm("Would you like to include numbers?");
   var includeSymbols = confirm("Would you like to include special characters?");
+
+for (var i = 0; i <= inputPassLength; i++) {
+  var generatedPassword ="";
+
+  if (confirm.includeUpperCase = true) {
+    var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var randomUpper = (Math.floor(Math.random() * upperCaseChars.length));
+    generatedPassword += randomUpper;
+  }
+  if (confirm.includeLowerCase = true) {
+    var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
+    var randomLower = (Math.floor(Math.random() * lowerCaseChars.length));
+    generatedPassword += randomLower;
+  }
+  if (confirm.includeNumbers = true) {
+    var numberChars = "0123456789";
+    var randomNumber = (Math.floor(Math.random() * numberChars.length));
+    generatedPassword += randomNumber;
+  }
+  if (confirm.includeSymbols = true) {
+    var specialChars = "`~!@#$%^&*()_-+={}[]:;";
+    var randomSpecial = (Math.floor(Math.random() * specialChars.length));
+    generatedPassword += randomSpecial;
+  }
 }
-
-function randomUpper () {
-  return String.randomUpper(Math.floor(Math.random() * 26) + 97);
+console.log(generatedPassword)
 }
-function randomLower () {
-  return String.lowerCaseChars(Math.floor(Math.random() * 26) + 97);
-}
-function randomNumber () {
-  return String.numberChars(Math.floor(Math.random() * 10) + 48);
-}
-function randomSpecial () {
-  return String.specialChars[Math.floor(Math.random() * specialChars.length)];
-}
-
-//for (var i = 0; i <= inputPassLength; i++) {
-//  if confirm.includeUpperCase = true
-//  }
-
-
-
-
-// var selections = [];
-// var genPW = "";
-
-//passLength = parseInt(passLength);
-
-//if(passLength < 8 || passLength> 128) {
- // alert("Password length must be between 8 and 128 characters.");}
-
 
 // Write password to the #password input
 function writePassword() {
@@ -58,5 +55,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
-
-
