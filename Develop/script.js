@@ -5,6 +5,7 @@ var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
 var numberChars = "0123456789";
 var specialChars = "`~!@#$%^&*()_-+={}[]:;";
+var selections = "";
 
 function generatePassword() {
 
@@ -18,32 +19,58 @@ function generatePassword() {
   var includeNumbers = confirm("Would you like to include numbers?");
   var includeSymbols = confirm("Would you like to include special characters?");
 
-for (var i = 0; i <= inputPassLength; i++) {
-  var generatedPassword ="";
 
-  if (confirm.includeUpperCase = true) {
-    var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var randomUpper = (Math.floor(Math.random() * upperCaseChars.length));
-    generatedPassword += randomUpper;
+const upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".split("");
+const numberOptions = "0123456789".split("");
+const specialCharacters = "`~!@#$%^&*()_-+={}[]:;".split("");
+
+  if (includeUpperCase) {
+    for (var x = 0; x < upperCaseLetters.length; x++) {
+      selections += upperCaseLetters;
+    }
   }
-  if (confirm.includeLowerCase = true) {
-    var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
-    var randomLower = (Math.floor(Math.random() * lowerCaseChars.length));
-    generatedPassword += randomLower;
-  }
-  if (confirm.includeNumbers = true) {
-    var numberChars = "0123456789";
-    var randomNumber = (Math.floor(Math.random() * numberChars.length));
-    generatedPassword += randomNumber;
-  }
-  if (confirm.includeSymbols = true) {
-    var specialChars = "`~!@#$%^&*()_-+={}[]:;";
-    var randomSpecial = (Math.floor(Math.random() * specialChars.length));
-    generatedPassword += randomSpecial;
+  if (includeLowerCase) {
+    for (var x = 0; x < lowerCaseLetters.length; x++) {
+    selections += lowerCaseLetters;
   }
 }
-console.log(generatedPassword)
+  if (includeNumbers) {
+    for (var x = 0; x < numberOptions.length; x++) {
+      selections += numberOptions;
+  }
 }
+  if (includeSymbols) {
+    for (var x = 0; x < specialCharacters.length; x++) {
+      selections += specialCharacters;
+  }
+  }
+  console.log(selections);  
+
+  const arr = selections.split("");
+  const shuffled = arr.sort(() => 0.5 - Math.random());
+  let selected = shuffled.slice(0,inputPassLength);
+  selected.join("");
+
+  console.log(selected); 
+
+  let text = selected.toString();
+
+  console.log(text); 
+    }
+  
+
+
+
+
+
+
+
+
+  
+
+
+
 
 // Write password to the #password input
 function writePassword() {
