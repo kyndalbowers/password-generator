@@ -1,14 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
-var numberChars = "0123456789";
-var specialChars = "`~!@#$%^&*()_-+={}[]:;";
-var selections = "";
-
 function generatePassword() {
 
+  //my code
   var inputPassLength = prompt("What length would you like your password to be? (8-128 characters)")
   if (inputPassLength < 8 || inputPassLength > 128) {
     alert("Length must be between 8 and 128 characters.");
@@ -19,65 +14,48 @@ function generatePassword() {
   var includeNumbers = confirm("Would you like to include numbers?");
   var includeSymbols = confirm("Would you like to include special characters?");
 
+const upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+const numberOptions = "0123456789";
+const specialCharacters = "`~!@#$%^&*()_-+={}[]:;";
+var selections = [];
 
-const upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".split("");
-const numberOptions = "0123456789".split("");
-const specialCharacters = "`~!@#$%^&*()_-+={}[]:;".split("");
-
-  if (includeUpperCase) {
-    for (var x = 0; x < upperCaseLetters.length; x++) {
+if (includeUpperCase) {
       selections += upperCaseLetters;
-    }
   }
-  if (includeLowerCase) {
-    for (var x = 0; x < lowerCaseLetters.length; x++) {
-    selections += lowerCaseLetters;
+
+if (includeLowerCase) {
+      selections += lowerCaseLetters;
   }
-}
-  if (includeNumbers) {
-    for (var x = 0; x < numberOptions.length; x++) {
+
+if (includeNumbers) {
       selections += numberOptions;
   }
-}
-  if (includeSymbols) {
-    for (var x = 0; x < specialCharacters.length; x++) {
+
+if (includeSymbols) {
       selections += specialCharacters;
   }
-  }
-  console.log(selections);  
 
-  const arr = selections.split("");
-  const shuffled = arr.sort(() => 0.5 - Math.random());
-  let selected = shuffled.slice(0,inputPassLength);
-  selected.join("");
+console.log(selections);  
 
-  console.log(selected); 
+const arr = selections.split("");
+const shuffled = arr.sort(() => 0.5 - Math.random());
+let selected = shuffled.slice(0,inputPassLength);
 
-  let text = selected.toString();
+console.log(selected);
 
-  console.log(text); 
-    }
-  
+var newPasscode = selected.join("");
+console.log(newPasscode);
 
-
-
-
-
-
-
-
-  
-
-
-
+writePassword();
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = newPasscode;
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
 }
 
 // Add event listener to generate button
